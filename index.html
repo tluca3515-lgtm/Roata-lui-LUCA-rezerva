@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Roata Norocului</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="editor">
+    <h1>Configurator joc</h1>
+
+    <label>Enigme (câte una pe rând):</label><br>
+    <textarea id="puzzles-input" rows="5">EXEMPLU ENIGMA
+ALTA ENIGMA
+FINALA MARE</textarea><br><br>
+
+    <label>Segmente roată (separate prin virgulă):</label><br>
+    <input id="segments-input" value="100,200,300,Bonus 500,Pierzi tura,400,500,Bonus 1000"><br><br>
+
+    <h3>Echipa A</h3>
+    <input id="teamA-name" placeholder="Nume echipă A" value="Echipa A"><br>
+    <input id="teamA-players" placeholder="Jucători A" value="Jucător 1, Jucător 2"><br><br>
+
+    <h3>Echipa B</h3>
+    <input id="teamB-name" placeholder="Nume echipă B" value="Echipa B"><br>
+    <input id="teamB-players" placeholder="Jucători B" value="Jucător 3, Jucător 4"><br><br>
+
+    <button id="start-btn">Pornește jocul</button>
+</div>
+
+<div id="game" style="display:none;">
+    <div id="top-bar">
+        <div class="team-box">
+            <div id="teamA-label">Echipa A</div>
+            <div id="teamA-players-label">Jucători A</div>
+            <div id="teamA-score">Scor: 0</div>
+        </div>
+        <div class="center-info">
+            <div id="round-info">Runda 1</div>
+            <div id="turn-info">Rândul: Echipa A</div>
+            <div id="timer"></div>
+        </div>
+        <div class="team-box">
+            <div id="teamB-label">Echipa B</div>
+            <div id="teamB-players-label">Jucători B</div>
+            <div id="teamB-score">Scor: 0</div>
+        </div>
+    </div>
+
+    <div id="board">
+        <div id="puzzle-display">_ _ _ _ _</div>
+        <div id="message"></div>
+    </div>
+
+    <div id="wheel-container">
+        <div id="pointer"></div>
+        <canvas id="wheel" width="400" height="400"></canvas>
+    </div>
+
+    <div id="controls">
+        <button id="spin-btn">Învârte roata</button>
+        <button id="reveal-btn">Reveal Letter</button>
+        <button id="next-round-btn" style="display:none;">Runda următoare</button>
+        <button id="back-btn">Înapoi la configurare</button>
+    </div>
+
+    <div id="letter-section" style="display:none;">
+        <input id="letter-input" maxlength="1" placeholder="Literă">
+        <button id="check-letter-btn">Verifică litera</button>
+    </div>
+</div>
+
+<!-- Sunete -->
+<audio id="tick-sound" src="tick.mp3"></audio>
+<audio id="spin-sound" src="spin.mp3"></audio>
+<audio id="ding-sound" src="ding.mp3"></audio>
+<audio id="fail-sound" src="fail.mp3"></audio>
+<audio id="win-sound" src="win.mp3"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
